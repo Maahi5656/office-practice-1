@@ -3,8 +3,6 @@
 session_start();
 include 'database.php';
 
-
-
 if(isset($_GET['update'])){
 	$id = $_GET['update'];
 
@@ -14,9 +12,9 @@ if(isset($_GET['update'])){
 }
 
 
-
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
