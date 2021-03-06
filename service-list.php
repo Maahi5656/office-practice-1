@@ -95,15 +95,21 @@ if(!$_SESSION['admin']){
                                             </div>
                                         </div>
 
+                                        <?php if(isset($_SESSION['outcome'])){ ?>
+                                            <span class="text-<?php echo $_SESSION['type'] ?>">
+                                                <?php echo $_SESSION['outcome'] ?>
+                                            </span>
+                                        <?php }unset($_SESSION['outcome']) ?>                                        
+
                                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
  
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Image</th>
-                                                    <th>Service Name</th>
-                                                    <th>Service Details</th>
-                                                    <th>Action</th>
+                                                    <th class="w-25">Image</th>
+                                                    <th class="w-25">Service Name</th>
+                                                    <th class="w-25">Service Details</th>
+                                                    <th class="w-25">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -116,12 +122,12 @@ if(!$_SESSION['admin']){
 
                                                     <tr>
                                                         <td><?php echo $i; ?></td>
-                                                        <td><img src="<?php echo $row['image']; ?>" alt=""></td>
-                                                        <td><?php echo $row['service_name']; ?></td>
-                                                        <td><?php echo $row['service_details']; ?></td>
-                                                        <td>
-                                                            <a href="" class="btn btn-warning">Update</a>
-                                                            <a href="" class="btn btn-danger">Delete</a>
+                                                        <td class="w-25"><img src="<?php echo $row['image']; ?>" alt=""></td>
+                                                        <td class="w-25"><?php echo $row['service_name']; ?></td>
+                                                        <td class="w-25"><?php echo $row['service_details']; ?></td>
+                                                        <td class="w-25">
+                                                            <a href="service-edit.php?edit=<?php echo $row['ID'] ?>" class="btn btn-warning">Update</a>
+                                                            <a href="service-delete.php?delete=<?php echo $row['ID'] ?>" class="btn btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
 

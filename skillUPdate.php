@@ -19,7 +19,7 @@ if(isset($_POST['update_skill']) ){
 
 		$query = mysqli_query($connection, $sql);
 
-		print_r($query);
+		// print_r($query);
 		if($query) {
 			header("Location: skill-list.php");
 		}
