@@ -137,6 +137,14 @@ if(!$_SESSION['admin']){
                                                       <option value="CSS">CSS</option>
                                                       <option value="JavaScript">JavaScript</option>
                                                       <option value="PHP">PHP</option>
+                                                      <option value="Laravel">Laravel</option>
+                                                      <option value="Node.js">Node.js</option>
+                                                      <option value="React.js">React.js</option>
+                                                      <option value="Vue.js">Vue.js</option>
+                                                      <option value="Angular.js">Angular.js</option>
+                                                      <option value="Sass">Sass</option>
+                                                      <option value="WordPress">WordPress</option>
+                                                      <option value="Magento">Magento</option>
                                                   </select>
                                                   <span class="text-danger">
                                                     <?php 

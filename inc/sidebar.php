@@ -12,9 +12,16 @@
                             <li>
                                 <a href="form.php" class="waves-effect">
                                     <i class="bx bx-chat"></i>
-                                    <span key="t-chat">User</span>
+                                    <span key="t-chat">User1</span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="user.php" class="waves-effect">
+                                    <i class="bx bx-chat"></i>
+                                    <span key="t-chat">View Profile</span>
+                                </a>
+                            </li>                            
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">

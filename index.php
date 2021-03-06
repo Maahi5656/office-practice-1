@@ -32,18 +32,6 @@ include 'database.php';
     </head>
     <body class="theme-bg">
 
-        <!-- preloader -->
-        <div id="preloader">
-            <div id="loading-center">
-                <div id="loading-center-absolute">
-                    <div class="object" id="object_one"></div>
-                    <div class="object" id="object_two"></div>
-                    <div class="object" id="object_three"></div>
-                </div>
-            </div>
-        </div>
-        <!-- preloader-end -->
-
         <!-- header-start -->
         <header>
             <div id="header-sticky" class="transparent-header">
@@ -119,16 +107,24 @@ include 'database.php';
 
         <!-- main-area -->
         <main>
-
+        
             <!-- banner-area -->
             <section id="home" class="banner-area banner-bg fix">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-7 col-lg-6">
                             <div class="banner-content">
+                                <?php 
+                                   $sql = "SELECT * FROM profile WHERE ID =1";
+                                   $result = mysqli_query($connection, $sql);
+                                ?>
+
                                 <h6 class="wow fadeInUp" data-wow-delay="0.2s">HELLO!</h6>
-                                <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am Will Smith</h2>
-                                <p class="wow fadeInUp" data-wow-delay="0.6s">I'm Will Smith, professional web developer with long time experience in this field​.</p>
+                                <?php if(mysqli_num_rows($result)>0){ ?>
+                                    <?php while($row = mysqli_fetch_assoc($result)){ ?>
+                                <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am <?php echo $row['firstname'] ?>  <?php echo $row['lastname'] ?></h2>
+                                
+                                <p class="wow fadeInUp" data-wow-delay="0.6s"><?php echo $row['occupation'] ?></p>
                                 <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
                                     <ul>
                                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -137,6 +133,10 @@ include 'database.php';
                                         <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
                                     </ul>
                                 </div>
+                                <?php
+                                 }
+                                }
+                                ?>
                                 <a href="#portfolio" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
                             </div>
                         </div>
@@ -153,6 +153,10 @@ include 'database.php';
 
             <!-- about-area-->
             <section id="about" class="about-area primary-bg pt-120 pb-120">
+                    <?php 
+                        $sql = "SELECT * FROM profile WHERE ID = 1";
+                        $result = mysqli_query($connection, $sql);
+                    ?>
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
@@ -162,73 +166,41 @@ include 'database.php';
                         </div>
                         <div class="col-lg-6 pr-90">
                             <div class="section-title mb-25">
+                                <?php if(mysqli_num_rows($result)>0){ ?>
+                                    <?php while($row = mysqli_fetch_assoc($result)){ ?>                                
                                 <span>Introduction</span>
                                 <h2>About Me</h2>
                             </div>
                             <div class="about-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, sed repudiandae odit deserunt, quas
-                                    quibusdam necessitatibus nesciunt eligendi esse sit non reprehenderit quisquam asperiores maxime
-                                    blanditiis culpa vitae velit. Numquam!</p>
-                                <h3>Education:</h3>
+                                <p><?php echo $row['description'] ?></p>
+                                <h3>Skills:</h3>
                             </div>
+                            <?php
+                                 }
+                                }
+                            ?>    
                             <!-- Education Item -->
+                    <?php 
+                        $sql = "SELECT * FROM skill";
+                        $result = mysqli_query($connection, $sql);
+                    
+                    ?>                            
+                        <?php foreach($result as $data){ ?>
                             <div class="education">
-                                <div class="year">2020</div>
-                                <div class="line"></div>
+
+                                <div class="year"><?=$data['name']?></div>
+                               <div class="line"></div> 
                                 <div class="location">
-                                    <span>PHD of Interaction Design &amp; Animation</span>
+                                   <!-- <span>PHD of Interaction Design &amp; Animation</span> -->
                                     <div class="progressWrapper">
                                         <div class="progress">
-                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: <?=$data['percent']?>%;" aria-valuenow="65" aria-valuemin="100" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Education Item -->
-                            <!-- Education Item -->
-                            <div class="education">
-                                <div class="year">2016</div>
-                                <div class="line"></div>
-                                <div class="location">
-                                    <span>Master of Database Administration</span>
-                                    <div class="progressWrapper">
-                                        <div class="progress">
-                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Education Item -->
-                            <!-- Education Item -->
-                            <div class="education">
-                                <div class="year">2010</div>
-                                <div class="line"></div>
-                                <div class="location">
-                                    <span>Bachelor of Computer Engineering</span>
-                                    <div class="progressWrapper">
-                                        <div class="progress">
-                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Education Item -->
-                            <!-- Education Item -->
-                            <div class="education">
-                                <div class="year">2005</div>
-                                <div class="line"></div>
-                                <div class="location">
-                                    <span>Diploma of Computer</span>
-                                    <div class="progressWrapper">
-                                        <div class="progress">
-                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Education Item -->
+                            <?php } ?>
+
                         </div>
                     </div>
                 </div>
